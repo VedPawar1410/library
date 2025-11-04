@@ -8,8 +8,14 @@ function Book(title, author, pages, bookRead){
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.bookRead}`
     }
 }
-const myBook = new Book();
-console.log(myBook.info());
 
+
+function addBookToLibrary(title, author, pages, bookRead) {
+    // take params, create a book then store it in the array
+    const newBook = new Book(title, author, pages, bookRead);
+    myLibrary.push(newBook);
+    console.log(myLibrary);
+
+}
 
 
