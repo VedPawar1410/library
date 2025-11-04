@@ -1,8 +1,8 @@
 function Book(title, author, pages, bookRead){
-    this.title = 'Harry Potter and the Philosopher\'s Stone';
-    this.author = 'J. K. Rowling';
-    this.pages = 493;
-    this.bookRead = false;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.bookRead = bookRead;
 
     this.info = function(){
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.bookRead}`
