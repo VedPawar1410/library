@@ -35,3 +35,23 @@ function displayLibrary() {
         console.log(book.info());
     });
 }
+
+function removeDuplicates() {
+    myLibrary = myLibrary.filter(
+        (book, index, self) =>
+            index === self.findIndex(
+                b =>
+                    b.title.toLowerCase() === book.title.toLowerCase() &&
+                    b.author.toLowerCase() === book.author.toLowerCase()
+            )
+    );
+}
+
+//removing duplicates
+
+//adding books
+addBookToLibrary('AI 2041','Chen Quifan', 400, true);
+addBookToLibrary('Three body problem','Que Fan',345,false);
+addBookToLibrary('Investing','Zerodha',111,true);
+
+displayLibrary()
