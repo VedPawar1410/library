@@ -9,13 +9,15 @@ function Book(title, author, pages, bookRead){
     }
 }
 
-
+let myLibrary = [];
 function addBookToLibrary(title, author, pages, bookRead) {
     // take params, create a book then store it in the array
     const newBook = new Book(title, author, pages, bookRead);
     myLibrary.push(newBook);
     console.log(myLibrary);
 
+
 }
 
+addBookToLibrary('AI 2041','Chen Qiufan', 400, true);
 
