@@ -47,6 +47,33 @@ function removeDuplicates() {
     );
 }
 
+// script.js
+if (document.body.classList.contains("add-book-page")) {
+    //Form submission collection
+    const submitBtn = document.querySelector(".btn");
+
+    submitBtn.addEventListener("click", function(e) {
+        e.preventDefault(); // stops page reload
+
+        // Collect form data
+        const title = document.getElementById("title").value.trim();
+        const author = document.getElementById("author").value.trim();
+        const pages = document.getElementById("pages").value.trim();
+        const bookRead = document.getElementById("read").value === "yes";
+
+        // Pass to your function
+        addBookToLibrary(title, author, pages, bookRead);
+
+        // Clear the form (optional)
+        e.target.reset();
+    });
+}
+
+
+if (document.body.classList.contains("home-page")) {
+    // run code for home page
+}
+
 //removing duplicates
 
 //adding books
