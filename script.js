@@ -57,28 +57,25 @@ function removeDuplicates() {
 // script.js
 if (document.body.classList.contains("add-book-page")) {
     //Form submission collection
-    const submitBtn = document.querySelector(".btn");
+    const form = document.getElementById("bookForm");
+    if (form) {
+        form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    if(submitBtn){
-        submitBtn.addEventListener("click", function(e) {
-            e.preventDefault(); // stops page reload
-    
-            // Collect form data
-            const title = document.getElementById("title").value.trim();
-            const author = document.getElementById("author").value.trim();
-            const pages = document.getElementById("pages").value.trim();
-            const year = document.getElementById("year").value.trim();
-            const bookRead = document.querySelector('input[name="bookRead"]:checked')?.value === "yes";
+        const title = document.getElementById("title").value.trim();
+        const author = document.getElementById("author").value.trim();
+        const pages = document.getElementById("pages").value.trim();
+        const year = document.getElementById("year").value.trim();
+        const bookRead =
+            document.querySelector('input[name="bookRead"]:checked')?.value === "yes";
 
-    
-            // Pass to your function
-            addBookToLibrary(title, author, pages, year, bookRead);
-    
-            // Clear the form (optional)
-            e.target.reset();
+        addBookToLibrary(title, author, pages, year, bookRead);
+        form.reset();
+        window.location.href = "storage.html"; // go to collection
     });
 }
 }
+
 
 
 if (document.body.classList.contains("home-page")) {
