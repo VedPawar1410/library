@@ -85,11 +85,11 @@ if (document.body.classList.contains("home-page")) {
     // run code for home page
 }
 
-//removing duplicates
+/* //removing duplicates
 
 //adding books
 addBookToLibrary('AI 2041','Chen Quifan', 400, true);
 addBookToLibrary('Three body problem','Que Fan',345,false);
 addBookToLibrary('Investing','Zerodha',111,true);
 
-displayLibrary()
+displayLibrary() */
