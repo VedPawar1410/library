@@ -1,17 +1,18 @@
-function Book(id, title, author, pages, bookRead){
+function Book(id, title, author, pages, year, bookRead){
     this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.year = year;
     this.bookRead = bookRead;
 
     this.info = function(){
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.bookRead}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, published in year${this.year}, Read the book: ${this.bookRead}`
     }
 }
 
 let myLibrary = [];
-function addBookToLibrary(title, author, pages, bookRead) {
+function addBookToLibrary(title, author, pages, year, bookRead) {
     // take params, create a book then store it in the array
     let id = crypto.randomUUID();
 
@@ -25,7 +26,7 @@ function addBookToLibrary(title, author, pages, bookRead) {
         return;
     }
 
-    const newBook = new Book(id, title, author, pages, bookRead);
+    const newBook = new Book(id, title, author, pages, year, bookRead);
     myLibrary.push(newBook);
     console.log(myLibrary);
 }
@@ -59,10 +60,11 @@ if (document.body.classList.contains("add-book-page")) {
         const title = document.getElementById("title").value.trim();
         const author = document.getElementById("author").value.trim();
         const pages = document.getElementById("pages").value.trim();
+        const year = document.getElementById("year").value.trim();
         const bookRead = document.getElementById("read").value === "yes";
 
         // Pass to your function
-        addBookToLibrary(title, author, pages, bookRead);
+        addBookToLibrary(title, author, pages, year, bookRead);
 
         // Clear the form (optional)
         e.target.reset();
