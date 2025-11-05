@@ -76,7 +76,34 @@ if (document.body.classList.contains("add-book-page")) {
 }
 }
 
-
+// Storage Page
+if (document.body.classList.contains("storage-page")) {
+    const container = document.getElementById("libraryDisplay");
+  
+    function displayLibrary() {
+      const myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+      if (!myLibrary.length) {
+        container.innerHTML = "<p>No books added yet!</p>";
+        return;
+      }
+  
+      container.innerHTML = "";
+      myLibrary.forEach(book => {
+        const div = document.createElement("div");
+        div.classList.add("book");
+        div.innerHTML = `
+          <h3>${book.title}</h3>
+          <p><strong>Author:</strong> ${book.author}</p>
+          <p><strong>Pages:</strong> ${book.pages}</p>
+          <p><strong>Year:</strong> ${book.year}</p>
+          <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+  
+    document.addEventListener("DOMContentLoaded", displayLibrary);
+  }
 
 if (document.body.classList.contains("home-page")) {
     // run code for home page

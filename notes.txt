@@ -1,0 +1,22 @@
+const div = document.createElement("div");
+
+const h3 = document.createElement("h3");
+h3.textContent = book.title;
+
+const p1 = document.createElement("p");
+p1.innerHTML = `<strong>Author:</strong> `;
+p1.append(document.createTextNode(book.author));
+
+const p2 = document.createElement("p");
+p2.innerHTML = `<strong>Pages:</strong> `;
+p2.append(document.createTextNode(book.pages));
+
+const p3 = document.createElement("p");
+p3.innerHTML = `<strong>Year:</strong> `;
+p3.append(document.createTextNode(book.year));
+
+const p4 = document.createElement("p");
+p4.innerHTML = `<strong>Read:</strong> `;
+p4.append(document.createTextNode(book.bookRead ? "Yes" : "No"));
+
+div.append(h3, p1, p2, p3, p4);
