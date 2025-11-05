@@ -21,4 +21,9 @@ body{
     display: grid;
     justify-items: center;
     align-content: center;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+}
+h1{
+    font-size: 50px;
 }
