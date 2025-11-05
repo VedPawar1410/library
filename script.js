@@ -1,3 +1,6 @@
+// /localStorage allows you to store data in the user’s browser — it stays there even if the page reloads or changes.
+let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+
 function Book(id, title, author, pages, year, bookRead){
     this.id = id;
     this.title = title;
@@ -11,7 +14,7 @@ function Book(id, title, author, pages, year, bookRead){
     }
 }
 
-let myLibrary = [];
+
 function addBookToLibrary(title, author, pages, year, bookRead) {
     // take params, create a book then store it in the array
     let id = crypto.randomUUID();
@@ -28,7 +31,10 @@ function addBookToLibrary(title, author, pages, year, bookRead) {
 
     const newBook = new Book(id, title, author, pages, year, bookRead);
     myLibrary.push(newBook);
-    console.log(myLibrary);
+
+    //Save to localStorage
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    console.log("Book added:", newBook);
 }
 
 function displayLibrary() {
@@ -53,22 +59,24 @@ if (document.body.classList.contains("add-book-page")) {
     //Form submission collection
     const submitBtn = document.querySelector(".btn");
 
-    submitBtn.addEventListener("click", function(e) {
-        e.preventDefault(); // stops page reload
-
-        // Collect form data
-        const title = document.getElementById("title").value.trim();
-        const author = document.getElementById("author").value.trim();
-        const pages = document.getElementById("pages").value.trim();
-        const year = document.getElementById("year").value.trim();
-        const bookRead = document.getElementById("read").value === "yes";
-
-        // Pass to your function
-        addBookToLibrary(title, author, pages, year, bookRead);
-
-        // Clear the form (optional)
-        e.target.reset();
+    if(submitBtn){
+        submitBtn.addEventListener("click", function(e) {
+            e.preventDefault(); // stops page reload
+    
+            // Collect form data
+            const title = document.getElementById("title").value.trim();
+            const author = document.getElementById("author").value.trim();
+            const pages = document.getElementById("pages").value.trim();
+            const year = document.getElementById("year").value.trim();
+            const bookRead = document.getElementById("read").value === "yes";
+    
+            // Pass to your function
+            addBookToLibrary(title, author, pages, year, bookRead);
+    
+            // Clear the form (optional)
+            e.target.reset();
     });
+}
 }
 
 
