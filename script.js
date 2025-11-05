@@ -68,7 +68,8 @@ if (document.body.classList.contains("add-book-page")) {
             const author = document.getElementById("author").value.trim();
             const pages = document.getElementById("pages").value.trim();
             const year = document.getElementById("year").value.trim();
-            const bookRead = document.getElementById("read").value === "yes";
+            const bookRead = document.querySelector('input[name="bookRead"]:checked')?.value === "yes";
+
     
             // Pass to your function
             addBookToLibrary(title, author, pages, year, bookRead);
