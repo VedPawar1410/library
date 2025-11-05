@@ -15,9 +15,16 @@ body{
     font-family: "Momo Trust Display", sans-serif;
     font-weight: 400;
     font-style: normal;
+    /* Background image styles */
+    background-image: url("./images/library.webp");
+    background-size: cover;      /* makes the image cover the screen */
+    background-position: center; /* centers the image */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* optional: gives a nice parallax effect */
+    min-height: 100vh; /* ensure full-screen background */
 }
 .container{
-    background-color: transparent;
+    background-color: transparent  ;
     justify-content: center;
     width: 50vw;
     height: 20vh;
