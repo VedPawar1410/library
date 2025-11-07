@@ -95,12 +95,16 @@ if (document.body.classList.contains("storage-page")) {
         const div = document.createElement("div");
         div.classList.add("book");
         div.innerHTML = `
-          <h3>${book.title}</h3>
-          <p><strong>Author:</strong> ${book.author}</p>
-          <p><strong>Pages:</strong> ${book.pages}</p>
-          <p><strong>Year:</strong> ${book.year}</p>
-          <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
-        `;
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Pages:</strong> ${book.pages}</p>
+            <p><strong>Year:</strong> ${book.year}</p>
+            <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
+
+            <button class="remove-btn" data-id="${book.id}">Remove</button>
+            <button class="toggle-btn" data-id="${book.id}">Toggle Read</button>
+            `;
+
         container.appendChild(div);
       });
     }
