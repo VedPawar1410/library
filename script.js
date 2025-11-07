@@ -14,6 +14,9 @@ function Book(id, title, author, pages, year, bookRead){
     }
 }
 
+Book.prototype.toggleRead = function () {
+    this.bookRead = !this.bookRead;
+};
 
 function addBookToLibrary(title, author, pages, year, bookRead) {
     // take params, create a book then store it in the array
