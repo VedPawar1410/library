@@ -8,20 +8,25 @@ svg:hover {
     cursor: pointer;
     opacity: 0.9;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Momo Trust Display", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    /* Background image styles */
-    background-image: url("./images/library.webp");
-    background-size: cover;      /* makes the image cover the screen */
-    background-position: center; /* centers the image */
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* optional: gives a nice parallax effect */
-    min-height: 100vh; /* ensure full-screen background */
+body {
+  font-family: "Roboto Slab", serif;
+  background-color: #f7f3e9;
+  color: #3e2f1c;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Warm subtle background texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("./images/library.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  z-index: -1;
 }
 .container{
     background-color: transparent  ;
@@ -34,10 +39,15 @@ body{
     grid-template-columns: 1fr 5fr;
     align-items: center;
 }
-h1{
-    font-size: 80px;
-    margin-right: 130px;
-    color: #4682B4; /* SteelBlue */
+h1, h2 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  color: #3e2f1c;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 40px 0;
 }
 .buttons-book button {
     padding: 15px 30px;
@@ -145,118 +155,102 @@ svg{
     width: 50%;
   }
   .form-input {
-    text-align: center;
     width: 100%;
-    padding: 13px 22px;
-    border-radius: 10px;
-    border: 1px solid #dde3ec;
-    background: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    color: #536387;
-    outline: none;
-    resize: none;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1c4a9;
+    background: #fffdfa;
+    margin-bottom: 18px;
+    font-size: 1rem;
   }
+  
   .form-input:focus {
-    border-color: #6a64f1;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    outline: none;
+    border-color: #b88a44;
   }
   .form-label {
-    color: #536387;
-    font-size: 14px;
-    line-height: 24px;.form-input {
-    text-align: center;
-    width: 100%;
-    padding: 13px 22px;
-    border-radius: 5px;
-    border: 1px solid #dde3ec;
-    background: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    color: #536387;
-    outline: none;
-    resize: none;
-  }
+    font-size: 0.95rem;
+    margin-bottom: 6px;
     display: block;
-    margin-bottom: 10px;
+    color: #3e2f1c;
   }
 
-  .btn {
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 14px 25px;
-    border: none;
-    font-weight: 500;
-    background-color: #6a64f1;
+  button, .btn {
+    padding: 12px 28px;
+    background-color: #b88a44;
     color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1.1rem;
     cursor: pointer;
-    margin-top: 25px;
-    margin-left: 200px;
+    transition: background 0.25s ease, transform 0.1s ease;
   }
-  .btn:hover {
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  
+  button:hover, .btn:hover {
+    background-color: #a07234;
+  }
+  
+  button:active, .btn:active {
+    transform: scale(0.97);
   }
 
   /* storage page card collector */
   /* Card container grid */
-#libraryDisplay {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-#libraryDisplay p{
-  color: rgb(0, 0, 0);
-
-}
-
-/* Each book card */
-.book, .no-info{
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
-
-/* Hover effect */
-.book:hover, .no-info{
-  transform: translateY(-5px);
-}
-
-/* Title */
-.book h3 {
-  margin-top: 0;
-  font-size: 1.3rem;
-  color: #333;
-}
-
-/* Info text */
-.book p {
-  margin: 6px 0;
-  color: #555;
-}
-
-.add-book-page svg{
-  margin-left: 20px;
-  height: 3%;
-  width: 3%;
-  margin-top: 20px;
-  padding-top: 30px;
-}
-.storage-title svg {
-  width: 50px;
-  height: 50px;
-  margin-left: 20px;
-}
-.storage-title {
-  display: flex;
-  align-items: center;     /* vertically center them */
-  gap: 20px;               /* spacing between SVG and text */
-  padding: 20px;
-}
-
+  #libraryDisplay {
+    width: 90%;
+    max-width: 1100px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+  }
+  
+  .book {
+    background: #fffdf8;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-left: 6px solid #b88a44;
+  }
+  
+  .book h3 {
+    font-size: 1.4rem;
+    color: #3e2f1c;
+  }
+  
+  .book p {
+    margin: 8px 0;
+    color: #4a3d2b;
+  }
+  
+  /* Buttons inside cards */
+  .book button {
+    margin-top: 12px;
+    width: 100%;
+  }
+  
+  /* Empty state */
+  .no-info {
+    background: #fffdf8;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  
+  /* Back button (SVG) */
+  svg:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  
+  svg {
+    width: 48px;
+    height: 48px;
+    margin: 20px;
+  }
 .remove-btn, .toggle-btn {
   align-items: center;
   appearance: none;
