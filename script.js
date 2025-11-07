@@ -89,6 +89,33 @@ if (document.body.classList.contains("storage-page")) {
         container.innerHTML = "<p>No books added yet!</p>";
         return;
       }
+
+      container.addEventListener("click", function(e) {
+        const id = e.target.dataset.id;
+        if (!id) return;
+    
+        let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+    
+        //Remove book
+        if (e.target.classList.contains("remove-btn")) {
+            myLibrary = myLibrary.filter(book => book.id !== id);
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+            displayLibrary();
+        }
+    
+        //Toggle read status
+        if (e.target.classList.contains("toggle-btn")) {
+            const book = myLibrary.find(book => book.id === id);
+    
+            // Recreate instance so prototype exists
+            Object.setPrototypeOf(book, Book.prototype);
+            book.toggleRead();
+    
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+            displayLibrary();
+        }
+    });
+    
   
       container.innerHTML = "";
       myLibrary.forEach(book => {
