@@ -232,3 +232,22 @@ svg{
   margin: 6px 0;
   color: #555;
 }
+
+.add-book-page svg{
+  margin-left: 20px;
+  height: 3%;
+  width: 3%;
+  margin-top: 20px;
+  padding-top: 30px;
+}
+.storage-title svg {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+}
+.storage-title {
+  display: flex;
+  align-items: center;     /* vertically center them */
+  gap: 20px;               /* spacing between SVG and text */
+  padding: 20px;
+}
