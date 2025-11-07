@@ -14,16 +14,6 @@ function Book(id, title, author, pages, year, bookRead){
     }
 }
 
-Book.prototype.toggleRead = function () {
-    this.bookRead = !this.bookRead;
-};
-//Load library and restore prototypes
-function loadLibrary() {
-    const raw = JSON.parse(localStorage.getItem("myLibrary")) || [];
-    // convert plain objects → Book instances
-    raw.forEach(obj => Object.setPrototypeOf(obj, Book.prototype));
-    return raw;
-}
 
 function addBookToLibrary(title, author, pages, year, bookRead) {
     // take params, create a book then store it in the array
