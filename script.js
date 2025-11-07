@@ -9,7 +9,7 @@ function Book(id, title, author, pages, year, bookRead){
     this.year = year;
     this.bookRead = bookRead;
 
-    this.info = function(){
+    Book.prototype.info = function() {
         return `${this.title} by ${this.author}, ${this.pages} pages, published in year${this.year}, Read the book: ${this.bookRead}`
     }
 }
