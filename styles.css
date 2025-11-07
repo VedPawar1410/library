@@ -28,16 +28,16 @@ body::before {
   opacity: 0.25;
   z-index: -1;
 }
-.container{
-    background-color: transparent  ;
-    justify-content: center;
-    width: 50vw;
-    height: 20vh;
-    display: grid;
-    justify-items: center;
-    align-content: center;
-    grid-template-columns: 1fr 5fr;
-    align-items: center;
+.container {
+  background-color: transparent;
+  justify-content: center;
+  width: 25vw;
+  height: 25vh;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
 }
 h1, h2 {
   font-family: "Roboto Slab", serif;
@@ -90,6 +90,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .buttons-book .first{
     margin-bottom: 30px;
