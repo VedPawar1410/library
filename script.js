@@ -86,65 +86,83 @@ if (document.body.classList.contains("add-book-page")) {
 }
 }
 
-// Storage Page
 if (document.body.classList.contains("storage-page")) {
     const container = document.getElementById("libraryDisplay");
-  
+
+    //Add prototype toggle function
+    Book.prototype.toggleRead = function () {
+        this.bookRead = !this.bookRead;
+    };
+
+    // Load library and restore prototypes
+    function loadLibrary() {
+        const raw = JSON.parse(localStorage.getItem("myLibrary")) || [];
+        // convert plain objects → Book instances
+        raw.forEach(obj => Object.setPrototypeOf(obj, Book.prototype));
+        return raw;
+    }
+
+    function saveLibrary(lib) {
+        localStorage.setItem("myLibrary", JSON.stringify(lib));
+    }
+
     function displayLibrary() {
-      const myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
-      if (!myLibrary.length) {
-        container.innerHTML = "<p>No books added yet!</p>";
-        return;
-      }
+        const myLibrary = loadLibrary();
 
-      container.addEventListener("click", function(e) {
-        const id = e.target.dataset.id;
-        if (!id) return;
-    
-        let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
-    
-        //Remove book
-        if (e.target.classList.contains("remove-btn")) {
-            myLibrary = myLibrary.filter(book => book.id !== id);
-            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-            displayLibrary();
+        if (!myLibrary.length) {
+            container.innerHTML = `<p class="no-info">No books added yet!</p>`;
+            return;
         }
-    
-        //Toggle read status
-        if (e.target.classList.contains("toggle-btn")) {
-            const book = myLibrary.find(book => book.id === id);
-    
-            // Recreate instance so prototype exists
-            Object.setPrototypeOf(book, Book.prototype);
-            book.toggleRead();
-    
-            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-            displayLibrary();
-        }
-    });
-    
-  
-      container.innerHTML = "";
-      myLibrary.forEach(book => {
-        const div = document.createElement("div");
-        div.classList.add("book");
-        div.innerHTML = `
-            <h3>${book.title}</h3>
-            <p><strong>Author:</strong> ${book.author}</p>
-            <p><strong>Pages:</strong> ${book.pages}</p>
-            <p><strong>Year:</strong> ${book.year}</p>
-            <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
 
-            <button class="remove-btn" data-id="${book.id}">Remove</button>
-            <button class="toggle-btn" data-id="${book.id}">Toggle Read</button>
+        container.innerHTML = "";
+
+        myLibrary.forEach(book => {
+            const div = document.createElement("div");
+            div.classList.add("book");
+
+            div.innerHTML = `
+                <h3>${book.title}</h3>
+                <p><strong>Author:</strong> ${book.author}</p>
+                <p><strong>Pages:</strong> ${book.pages}</p>
+                <p><strong>Year:</strong> ${book.year}</p>
+                <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
+
+                <button class="remove-btn" data-id="${book.id}">Remove</button>
+                <button class="toggle-btn" data-id="${book.id}">Toggle Read</button>
             `;
 
-        container.appendChild(div);
-      });
+            container.appendChild(div);
+        });
     }
-  
+
+    //Event delegation for buttons
+    container.addEventListener("click", function (e) {
+        const id = e.target.dataset.id;
+        if (!id) return;
+
+        let myLibrary = loadLibrary();
+
+        // Remove book
+        if (e.target.classList.contains("remove-btn")) {
+            myLibrary = myLibrary.filter(book => book.id !== id);
+            saveLibrary(myLibrary);
+            displayLibrary();
+        }
+
+        // Toggle read status
+        if (e.target.classList.contains("toggle-btn")) {
+            const book = myLibrary.find(b => b.id === id);
+
+            if (book) {
+                book.toggleRead();
+                saveLibrary(myLibrary);
+                displayLibrary();
+            }
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", displayLibrary);
-  }
+}
 
 if (document.body.classList.contains("home-page")) {
     // run code for home page

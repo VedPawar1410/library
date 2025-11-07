@@ -206,8 +206,13 @@ svg{
   padding: 20px;
 }
 
+#libraryDisplay p{
+  color: rgb(0, 0, 0);
+
+}
+
 /* Each book card */
-.book {
+.book, .no-info{
   background: #ffffff;
   padding: 20px;
   border-radius: 12px;
@@ -216,7 +221,7 @@ svg{
 }
 
 /* Hover effect */
-.book:hover {
+.book:hover, .no-info{
   transform: translateY(-5px);
 }
 
