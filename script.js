@@ -1,16 +1,22 @@
 // /localStorage allows you to store data in the user’s browser — it stays there even if the page reloads or changes.
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 
-function Book(id, title, author, pages, year, bookRead){
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.year = year;
-    this.bookRead = bookRead;
-
-    Book.prototype.info = function() {
+class Book{
+    constructor(id, title, author, pages, year, bookRead){
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.year = year;
+        this.bookRead = bookRead;
+    }
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, published in year${this.year}, Read the book: ${this.bookRead}`
+    }
+
+     //Add prototype toggle function
+    toggleRead(){
+        this.bookRead = !this.bookRead;
     }
 }
 
@@ -79,10 +85,6 @@ if (document.body.classList.contains("add-book-page")) {
 if (document.body.classList.contains("storage-page")) {
     const container = document.getElementById("libraryDisplay");
 
-    //Add prototype toggle function
-    Book.prototype.toggleRead = function () {
-        this.bookRead = !this.bookRead;
-    };
 
     // Load library and restore prototypes
     function loadLibrary() {
