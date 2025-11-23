@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body class="add-book-page">
+  
+    <a href="./index.html" class="home-link">
+        <svg xmlns="http://www.w3.org/2000/svg" class="home-icon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M18,21H6c-1.657,0-3-1.343-3-3V8.765c0-1.09,0.591-2.093,1.543-2.622l6-3.333 
+        c0.906-0.503,2.008-0.503,2.914,0l6,3.333C20.409,6.672,21,7.676,21,8.765V18C21,19.657,19.657,21,18,21z"/>
+            <path fill="#B8860B" d="M15,21H9v-6c0-1.105,0.895-2,2-2h2	c1.105,0,2,0.895,2,2V21z"/>
+        </svg>
+    </a>
+    <div class="main-wrapper">
+        <div class="form-wrapper">
+        
+            <form id="bookForm" method="POST">
+            <div class="form-title">
+              <h2 class="">Add your book</h2>
+              <p>
+                Every great library begins with one book. Enter your book’s information to save it in your collection
+              </p>
+            </div>
+      
+            <div class="input-flex">
+              <div>
+                <label for="title" class="form-label">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  class="form-input"
+                />
+              </div>
+            </div>
+      
+            <div class="input-flex">
+              <div>
+                <label for="author" class="form-label"> Author </label>
+                <input
+                  type="text"
+                  name="author"
+                  id="author"
+                  class="form-input"
+                />
+              </div>
+            </div>
+      
+            <div class="input-flex">
+                <div class="mb-2">
+                    <label for="pages" class="form-label"> Pages </label>
+                    <input
+                      type="number"
+                      name="pages"
+                      id="pages"
+                      class="form-input"
+                      min="0"
+                      max="5000"
+                    />
+                </div>
+                <div class="input-flex">
+                    <div>
+                        <label for="year" class="form-label"> Published Year </label>
+                        <input
+                        type="number"
+                        name="year"
+                        id="year"
+                        class="form-input"
+                        min="1000"
+                        max="2100"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="form-label">Have you read the book?</p>
+                <label>
+                    <input type="radio" name="bookRead" value="yes"> Yes
+                  </label>
+                  <label>
+                    <input type="radio" name="bookRead" value="no"> No
+                  </label>
+            </div>
+
+
+            <button class="btn stamp-btn">
+              <span class="stamp-icon">✒</span>
+              <span class="stamp-text">Add to Collection</span>
+            </button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
