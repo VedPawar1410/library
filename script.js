@@ -113,14 +113,34 @@ if (document.body.classList.contains("storage-page")) {
             div.classList.add("book");
 
             div.innerHTML = `
-                <h3>${book.title}</h3>
-                <p><strong>Author:</strong> ${book.author}</p>
-                <p><strong>Pages:</strong> ${book.pages}</p>
-                <p><strong>Year:</strong> ${book.year}</p>
-                <p><strong>Read:</strong> ${book.bookRead ? "Yes" : "No"}</p>
+                <div class="book-spine"></div>
+                <div class="read-badge ${book.bookRead ? 'read' : 'unread'}">
+                    <i class="fas ${book.bookRead ? 'fa-check-circle' : 'fa-circle'}"></i>
+                    <span>${book.bookRead ? 'Read' : 'Unread'}</span>
+                </div>
+                
+                <div class="book-content">
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-author"><i class="fas fa-feather-alt"></i> ${book.author}</p>
+                    
+                    <div class="book-details">
+                        <span class="detail-item">
+                            <i class="fas fa-file-alt"></i> ${book.pages} pages
+                        </span>
+                        <span class="detail-item">
+                            <i class="fas fa-calendar-alt"></i> ${book.year}
+                        </span>
+                    </div>
+                </div>
 
-                <button class="remove-btn" data-id="${book.id}">Remove</button>
-                <button class="toggle-btn" data-id="${book.id}">Toggle Read</button>
+                <div class="book-actions">
+                    <button class="icon-btn toggle-btn" data-id="${book.id}" title="Toggle Read Status">
+                        <i class="fas fa-book-reader"></i>
+                    </button>
+                    <button class="icon-btn remove-btn" data-id="${book.id}" title="Remove Book">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
             `;
 
             container.appendChild(div);

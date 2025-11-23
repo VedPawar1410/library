@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Library Collection</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="storage-page">
-    <div class="storage-title">
-        <a href="./index.html">
-          <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
+    <header class="collection-header">
+        <a href="./index.html" class="home-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="home-icon">
               <path fill="#4A2C2A" d="M18,21H6c-1.657,0-3-1.343-3-3V8.765c0-1.09,0.591-2.093,1.543-2.622l6-3.333 
               c0.906-0.503,2.008-0.503,2.914,0l6,3.333C20.409,6.672,21,7.676,21,8.765V18C21,19.657,19.657,21,18,21z"/>
               
-              <path fill="#B8860B" d="M15,21H9v-6c0-1.105,0.895-2,2-2h2	c1.105,0,2,0.895,2,2V21z"/>
+              <path fill="#B8860B" d="M15,21H9v-6c0-1.105,0.895-2,2-2h2c1.105,0,2,0.895,2,2V21z"/>
           </svg>
         </a>
     
-        <h1>Your Library</h1>
-    </div>
+        <div class="header-content">
+            <h1 class="collection-title">Your Library Collection</h1>
+            <p class="collection-subtitle">A curated anthology of literary treasures</p>
+        </div>
+    </header>
     
     <div id="libraryDisplay"></div>
 </body>
