@@ -49,6 +49,108 @@ body {
   align-items: center;
   line-height: 1.6;
 }
+
+/* Home Page - Centered Layout with Book Cover Frame */
+.home-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.book-cover-frame {
+  position: relative;
+  background: linear-gradient(135deg, var(--card-background) 0%, var(--background-cream) 100%);
+  border: 3px solid var(--primary-mahogany);
+  border-radius: 12px;
+  padding: 60px 80px;
+  box-shadow: 
+    0 10px 40px var(--shadow-color),
+    inset 0 0 0 1px var(--secondary-brass),
+    inset 0 0 0 8px var(--card-background);
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Decorative Corner Ornaments */
+.frame-ornament {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-style: solid;
+  border-color: var(--secondary-gold);
+}
+
+.frame-ornament.top-left {
+  top: 15px;
+  left: 15px;
+  border-width: 3px 0 0 3px;
+  border-radius: 4px 0 0 0;
+}
+
+.frame-ornament.top-right {
+  top: 15px;
+  right: 15px;
+  border-width: 3px 3px 0 0;
+  border-radius: 0 4px 0 0;
+}
+
+.frame-ornament.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  border-width: 0 0 3px 3px;
+  border-radius: 0 0 0 4px;
+}
+
+.frame-ornament.bottom-right {
+  bottom: 15px;
+  right: 15px;
+  border-width: 0 3px 3px 0;
+  border-radius: 0 0 4px 0;
+}
+
+.home-content {
+  text-align: center;
+}
+
+.icon-container {
+  margin-bottom: 30px;
+}
+
+.library-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--primary-mahogany);
+  filter: drop-shadow(2px 2px 4px var(--shadow-color));
+  transition: all 0.3s ease;
+}
+
+.library-icon:hover {
+  color: var(--secondary-gold);
+  transform: scale(1.05);
+}
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-dark-brown);
+  font-weight: 800;
+  font-size: 4.5rem;
+  letter-spacing: 8px;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
 .container{
   background-color: transparent;
   justify-content: center;
@@ -88,7 +190,102 @@ p {
   font-family: 'Lora', serif;
   color: var(--text-secondary);
 }
-.buttons-book button {
+
+/* Vintage Library Tag Buttons */
+.buttons-book {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.button-link {
+  width: 100%;
+  max-width: 350px;
+  text-decoration: none;
+}
+
+.library-tag-btn {
+  width: 100%;
+  padding: 18px 35px;
+  background: var(--card-background);
+  border: 2px solid var(--primary-mahogany);
+  border-left: 6px solid var(--secondary-gold);
+  color: var(--primary-dark-brown);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    4px 4px 0 var(--shadow-color),
+    inset 0 0 0 1px rgba(184, 134, 11, 0.2);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    0 100%
+  );
+}
+
+.library-tag-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--secondary-gold);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  transition: all 0.3s ease;
+}
+
+.library-tag-btn .btn-icon {
+  font-size: 1.3rem;
+  color: var(--secondary-gold);
+  transition: all 0.3s ease;
+}
+
+.library-tag-btn .btn-text {
+  transition: all 0.3s ease;
+}
+
+.library-tag-btn:hover {
+  background: var(--primary-mahogany);
+  color: var(--background-cream);
+  border-color: var(--secondary-gold);
+  transform: translateY(-4px) translateX(2px);
+  box-shadow: 
+    6px 8px 0 var(--shadow-color),
+    inset 0 0 0 1px var(--secondary-brass);
+}
+
+.library-tag-btn:hover .btn-icon {
+  color: var(--background-cream);
+  transform: scale(1.15);
+}
+
+.library-tag-btn:hover::before {
+  background: var(--secondary-brass);
+}
+
+.library-tag-btn:active {
+  transform: translateY(-1px) translateX(1px);
+  box-shadow: 
+    3px 4px 0 var(--shadow-color),
+    inset 0 0 0 1px var(--secondary-brass);
+}
+
+/* Old button styles - keeping for other pages */
+.buttons-book button:not(.library-tag-btn) {
     padding: 15px 40px;
     border: 2px solid var(--border-color);
     background-color: var(--primary-mahogany);
@@ -105,7 +302,7 @@ p {
     letter-spacing: 1px;
     box-shadow: 0 4px 6px var(--shadow-color);
 }
-.buttons-book button::after {
+.buttons-book button:not(.library-tag-btn)::after {
     content: "";
     position: absolute;
     top: 0;
@@ -121,21 +318,14 @@ p {
     transform-origin: left;
     transition: transform 0.4s ease;
 }
-.buttons-book button:hover::after {
+.buttons-book button:not(.library-tag-btn):hover::after {
     transform: scaleX(1);
 }
-.buttons-book button:hover {
+.buttons-book button:not(.library-tag-btn):hover {
     border-color: var(--secondary-gold);
     background: var(--primary-dark-brown);
     box-shadow: 0 6px 12px var(--shadow-color);
     transform: translateY(-2px);
-}
-.buttons-book{
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .buttons-book .first{
     margin-bottom: 30px;
