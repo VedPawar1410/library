@@ -1,3 +1,17 @@
+/* CSS Variables - Dark Academia Color Palette */
+:root {
+  --primary-dark-brown: #3E2723;
+  --primary-mahogany: #4A2C2A;
+  --secondary-gold: #B8860B;
+  --secondary-brass: #C9A961;
+  --background-cream: #F5F5DC;
+  --card-background: #FAF8F3;
+  --text-primary: #2C1810;
+  --text-secondary: #5D4E37;
+  --border-color: #8B7355;
+  --shadow-color: rgba(62, 39, 35, 0.15);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,38 +20,34 @@
 
 svg:hover {
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .storage-title svg, 
 .add-book-page svg, 
 .home-page svg {
-  fill: #000000;
+  fill: var(--primary-mahogany);
   width: 40px;
   height: 40px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, fill 0.2s ease;
+}
+
+.storage-title svg:hover, 
+.add-book-page svg:hover, 
+.home-page svg:hover {
+  fill: var(--secondary-gold);
 }
 
 body {
-  background-color: #ffffff; /* Pure white */
-  color: #000000;            /* Pure black text */
-  font-family: "Roboto Slab", serif;
+  background-color: var(--background-cream);
+  color: var(--text-primary);
+  font-family: 'Lora', serif;
   min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-/* Warm subtle background texture */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("./images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.25;
-  z-index: -1;
+  line-height: 1.6;
 }
 .container{
   background-color: transparent;
@@ -51,28 +61,49 @@ body::before {
   align-items: center;
 }
 h1, h2 {
-  font-family: "Roboto Slab", serif;
-  color: #000000;
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-dark-brown);
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 h1 {
-  font-size:5rem;
+  font-size: 5rem;
   margin: 40px 0;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-mahogany);
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Lora', serif;
+  color: var(--text-secondary);
 }
 .buttons-book button {
-    padding: 15px 30px;
-    border: 2px solid #2c2c2c;
-    background-color: #1a1a1a;
-    color: #ffffff;
+    padding: 15px 40px;
+    border: 2px solid var(--border-color);
+    background-color: var(--primary-mahogany);
+    color: var(--background-cream);
     font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
     cursor: pointer;
-    border-radius: 30px;
-    transition: all 0.4s ease;
+    border-radius: 4px;
+    transition: all 0.3s ease;
     outline: none;
     position: relative;
     overflow: hidden;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px var(--shadow-color);
 }
 .buttons-book button::after {
     content: "";
@@ -81,20 +112,23 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 0) 70%
+    background: linear-gradient(
+      135deg,
+      rgba(184, 134, 11, 0.2) 0%,
+      rgba(201, 169, 97, 0.1) 100%
     );
-    transform: scale(0);
-    transition: transform 0.5s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
 }
 .buttons-book button:hover::after {
-    transform: scale(4);
+    transform: scaleX(1);
 }
 .buttons-book button:hover {
-    border-color: #666666;
-    background: #292929;
+    border-color: var(--secondary-gold);
+    background: var(--primary-dark-brown);
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transform: translateY(-2px);
 }
 .buttons-book{
     margin-top: 150px;
@@ -135,27 +169,33 @@ svg{
   }
 
   .form-wrapper {
-    background: #ffffff;        /* White card */
-    border: 1px solid #e0e0e0;  /* Light gray border */
-    padding: 30px;
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    box-shadow: 0 8px 20px var(--shadow-color);
+    max-width: 600px;
   }
 
   .form-title {
     margin-bottom: 30px;
+    border-bottom: 2px solid var(--secondary-brass);
+    padding-bottom: 15px;
   }
   .form-title h2 {
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 34px;
-    color: #07074d;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: var(--primary-dark-brown);
+    font-family: 'Playfair Display', serif;
   }
   .form-title p {
     font-size: 16px;
     line-height: 24px;
-    color: #536387;
+    color: var(--text-secondary);
     margin-top: 12px;
+    font-family: 'Lora', serif;
+    font-style: italic;
   }
 
   .input-flex {
@@ -166,44 +206,108 @@ svg{
   .input-flex > div {
     width: 50%;
   }
+
+  /* Radio buttons styling */
+  input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+  }
+
+  input[type="radio"]:checked {
+    border-color: var(--secondary-gold);
+    background-color: var(--background-cream);
+  }
+
+  input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-gold);
+  }
+
+  input[type="radio"]:hover {
+    border-color: var(--secondary-brass);
+  }
+
+  label {
+    font-family: 'Lora', serif;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 1rem;
+  }
+
+  label:has(input[type="radio"]) {
+    display: inline-flex;
+    align-items: center;
+  }
   .form-input {
-    background: #ffffff;
-    color: #000000;
-    border: 1px solid #cfcfcf;
-    border-radius: 5px;
-    padding: 12px;
+    background: var(--background-cream);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px 16px;
     width: 100%;
     margin-bottom: 15px;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
   }
   
   .form-input:focus {
     outline: none;
-    border-color: #000000; /* Black outline when selected */
+    border-color: var(--secondary-gold);
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    background: var(--card-background);
   }
   .form-label {
     font-size: 0.95rem;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: block;
-    color: #3e2f1c;
+    color: var(--primary-mahogany);
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
   button, .btn {
-    background-color: #000000; /* Black button */
-    color: #ffffff;            /* White text */
-    border: none;
-    border-radius: 6px;
-    padding: 12px 24px;
+    background-color: var(--primary-mahogany);
+    color: var(--background-cream);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    padding: 12px 28px;
     font-size: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.1s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px var(--shadow-color);
   }
   
   button:hover, .btn:hover {
-    background-color: #858585; /* Dark gray */
+    background-color: var(--primary-dark-brown);
+    border-color: var(--secondary-gold);
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transform: translateY(-2px);
   }
   
   button:active, .btn:active {
-    transform: scale(0.97);
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 4px var(--shadow-color);
   }
 
   /* storage page card collector */
@@ -218,22 +322,50 @@ svg{
   }
 
   .book {
-    background: #ffffff;
-    border: 1px solid #e6e6e6;
-    padding: 20px;
-    border-radius: 10px;
-    color: #000000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    padding: 24px;
+    border-radius: 8px;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .book::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--secondary-gold), var(--secondary-brass));
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .book:hover {
+    box-shadow: 0 8px 20px var(--shadow-color);
+    transform: translateY(-4px);
+    border-color: var(--secondary-brass);
   }
   
   .book h3 {
-    font-size: 1.4rem;
-    color: #3e2f1c;
+    font-size: 1.5rem;
+    color: var(--primary-dark-brown);
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
   }
   
   .book p {
-  color: #111111;
-}
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-family: 'Lora', serif;
+  }
+
+  .book p strong {
+    color: var(--primary-mahogany);
+    font-weight: 600;
+  }
   
   /* Buttons inside cards */
   .book button {
@@ -243,12 +375,17 @@ svg{
   
   /* Empty state */
   .no-info {
-    background: #fffdf8;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--card-background);
+    border: 2px dashed var(--border-color);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
     text-align: center;
     grid-column: 1 / -1;
+    font-family: 'Lora', serif;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-style: italic;
   }
   
   /* Back button (SVG) */
@@ -262,8 +399,13 @@ svg{
     height: 48px;
     margin: 20px;
   }
+  .remove-btn, .toggle-btn {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+  }
+
   .remove-btn:hover, .toggle-btn:hover {
-    background: #333333;
+    background: var(--primary-dark-brown);
   }
   
   .remove-btn:active {
