@@ -134,10 +134,10 @@ if (document.body.classList.contains("storage-page")) {
                 </div>
 
                 <div class="book-actions">
-                    <button class="icon-btn toggle-btn" data-id="${book.id}" title="Toggle Read Status">
+                    <button class="btn icon-btn toggle-btn" data-id="${book.id}" title="Toggle Read Status">
                         <i class="fas fa-book-reader"></i>
                     </button>
-                    <button class="icon-btn remove-btn" data-id="${book.id}" title="Remove Book">
+                    <button class="btn icon-btn remove-btn" data-id="${book.id}" title="Remove Book">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
